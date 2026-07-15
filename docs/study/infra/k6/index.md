@@ -11,7 +11,7 @@ source_documents:
   - "../../../research/infra/k6/03-scenarios-and-executors.md"
   - "../../../research/infra/k6/04-metrics-checks-thresholds.md"
   - "../../../research/infra/k6/05-practice-strategy.md"
-last_updated: "2026-07-15"
+last_updated: "2026-07-16"
 ---
 
 # k6 학습 로드맵
@@ -67,7 +67,7 @@ flowchart LR
 
 1. 각 문서의 예측 질문에 먼저 답한다.
 2. [인터랙티브 k6 랩](../../../../visualization/src/app/infra/k6/page.tsx)에서 입력을 바꿔 결과를 관찰한다.
-3. [실행 실습](../../../../k6/README.md)으로 시뮬레이션과 실제 결과의 차이를 확인한다.
+3. [실행 실습](../../../../practice/infra/k6/README.md)으로 시뮬레이션과 실제 결과의 차이를 확인한다.
 4. 회상·예측·적용 문제를 말이나 글로 설명한다.
 
 ## 완료 기준

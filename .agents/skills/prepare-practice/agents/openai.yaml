@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prepare Practice"
+  short_description: "기술 학습용 실행 실습 환경을 안전하게 구성합니다"
+  default_prompt: "Use $prepare-practice to create a reproducible practice lab for this study topic."

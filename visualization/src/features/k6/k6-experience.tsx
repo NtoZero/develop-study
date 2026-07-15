@@ -279,7 +279,7 @@ export function K6Experience({ lessons, sources }: { lessons: Lesson[]; sources:
           <li><span>03</span><div><strong>Arrival rate</strong><p>고정 도착률과 VU 용량·누락</p><code>pnpm docker:open</code></div></li>
           <li><span>04</span><div><strong>Intentional fail</strong><p>기능은 정상, p95 threshold는 실패</p><code>pnpm docker:fail</code></div></li>
         </ol>
-        <p className="practice-path">터미널 1에서 <code>cd k6 && pnpm target</code> 실행 후, 터미널 2에서 위 명령을 실행합니다.</p>
+        <p className="practice-path">터미널 1에서 <code>cd practice/infra/k6 && pnpm target</code> 실행 후, 터미널 2에서 위 명령을 실행합니다.</p>
       </section>
 
       <footer className="source-footer">

@@ -10,7 +10,7 @@ prerequisites:
   - "04 메트릭과 품질 게이트"
 source_documents:
   - "../../../research/infra/k6/05-practice-strategy.md"
-last_updated: "2026-07-15"
+last_updated: "2026-07-16"
 ---
 
 # 로컬 안내형 실습
@@ -35,7 +35,7 @@ last_updated: "2026-07-15"
 
 ## 1. 기초 개념
 
-이 과정의 [실행 랩](../../../../k6/README.md)은 Node.js로 만든 통제 가능한 SUT와 k6 v2.0.0 시나리오를 분리한다.
+이 과정의 [실행 랩](../../../../practice/infra/k6/README.md)은 Node.js로 만든 통제 가능한 SUT와 k6 v2.0.0 시나리오를 분리한다.
 
 | 실습 | 변경하는 것 | 확인하는 것 |
 | --- | --- | --- |
@@ -69,7 +69,7 @@ flowchart LR
 ## 4. 단계별 실습
 
 ```bash
-cd k6
+cd practice/infra/k6
 pnpm target
 
 # 다른 터미널: 로컬 k6

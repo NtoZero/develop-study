@@ -12,7 +12,7 @@
 ## 1. 대상 서버 실행
 
 ```bash
-cd k6
+cd practice/infra/k6
 pnpm target
 ```
 
@@ -30,7 +30,7 @@ pnpm target
 다른 터미널에서 실행한다. 로컬 k6를 사용할 때:
 
 ```bash
-cd k6
+cd practice/infra/k6
 BASE_URL=http://localhost:3001 pnpm smoke
 BASE_URL=http://localhost:3001 pnpm closed
 BASE_URL=http://localhost:3001 pnpm open
@@ -40,7 +40,7 @@ BASE_URL=http://localhost:3001 pnpm fail
 Docker를 사용할 때:
 
 ```bash
-cd k6
+cd practice/infra/k6
 pnpm docker:smoke
 pnpm docker:closed
 pnpm docker:open
@@ -84,6 +84,7 @@ pnpm docker:fail
 
 ## 학습 자료
 
-- [k6 학습 로드맵](../docs/study/infra/k6/index.md)
+- [k6 학습 로드맵](../../../docs/study/infra/k6/index.md)
+- [k6 조사 문서](../../../docs/research/infra/k6/index.md)
 - [공식 k6 설치 문서](https://grafana.com/docs/k6/latest/set-up/install-k6/)
 - [k6 v2.0.0 릴리스](https://github.com/grafana/k6/releases/tag/v2.0.0)

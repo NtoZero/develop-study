@@ -13,7 +13,7 @@ prerequisites:
 tags:
   - "practice"
   - "test-strategy"
-last_verified: "2026-07-15"
+last_verified: "2026-07-16"
 ---
 
 # k6 테스트 전략과 안전한 실습 설계
@@ -47,7 +47,7 @@ Grafana의 시작 예제도 작은 smoke test 후 average-load scenario, thresho
 ## 실습 구조
 
 ```text
-k6/
+practice/infra/k6/
 ├── README.md
 ├── compose.yaml
 ├── target/server.mjs
@@ -83,13 +83,13 @@ k6/
 
 ```bash
 # 터미널 1: 로컬 대상 서버
-node k6/target/server.mjs
+node practice/infra/k6/target/server.mjs
 
 # 터미널 2: 로컬 k6 CLI가 있는 경우
-BASE_URL=http://localhost:3001 k6 run k6/scenarios/01-smoke.js
+BASE_URL=http://localhost:3001 k6 run practice/infra/k6/scenarios/01-smoke.js
 
 # Docker를 사용하는 경우
-docker compose -f k6/compose.yaml run --rm k6 run /scripts/01-smoke.js
+docker compose -f practice/infra/k6/compose.yaml run --rm k6 run /scripts/01-smoke.js
 ```
 
 Docker 안에서 호스트의 대상 서버에 접근할 때 macOS/Windows에서는 `host.docker.internal`을 사용한다. compose 설정은 이 값을 기본 `BASE_URL`로 제공한다.

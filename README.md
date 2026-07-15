@@ -78,22 +78,22 @@ flowchart LR
 │       ├── 02-<detail-lesson>.md
 │       └── 03-<application-lesson>.md
 ├── visualization/                  # Next.js 기반 인터랙티브 시각화 앱
-├── k6/                             # k6 로컬 대상 서버와 실행 시나리오
-├── spring/                         # 예: JUnit으로 검증하는 Spring 학습 테스트
-├── langchain/                      # 예: LangChain 실행 기반 학습 테스트
-└── langgraph/                      # 예: LangGraph 실행 기반 학습 테스트
+└── practice/<domain>/<topic>/      # 문서의 개념을 실행으로 검증하는 실습
+    ├── infra/k6/                   # k6 로컬 대상 서버와 실행 시나리오
+    ├── be/spring/                  # 예: JUnit 기반 Spring 학습 테스트
+    └── ai/langgraph/               # 예: LangGraph 실행 학습 테스트
 ```
 
-`docs/research`와 `docs/study`는 동일한 `<domain>/<topic>` 경로를 사용합니다. `index.md`는 문서 지도와 탐색 순서만 담당하며, 실제 내용은 하나의 종합 문서에 모으지 않고 개념 오버뷰, 핵심 동작과 세부 개념, 응용과 판단 등 난이도와 소주제에 따라 번호가 붙은 여러 문서로 나눕니다.
+`docs/research`, `docs/study`, `practice`는 동일한 `<domain>/<topic>` 경로를 사용합니다. `index.md`는 문서 지도와 탐색 순서만 담당하며, 실제 내용은 하나의 종합 문서에 모으지 않고 개념 오버뷰, 핵심 동작과 세부 개념, 응용과 판단 등 난이도와 소주제에 따라 번호가 붙은 여러 문서로 나눕니다.
 
-루트에는 `spring`, `langchain`, `langgraph`처럼 프레임워크나 라이브러리별 실행 학습 디렉터리를 추가할 수 있습니다. 각 디렉터리는 해당 생태계의 표준 테스트 도구와 프로젝트 구조를 따르며, 문서에서 설명한 동작을 코드와 테스트로 직접 검증하는 실험 공간으로 사용합니다.
+실행 학습은 반드시 `practice/<domain>/<topic>/`에 둡니다. 각 토픽 안에서는 Spring의 Gradle·Maven 구조, Python의 `pyproject.toml`, 인프라 도구의 Docker Compose처럼 해당 생태계의 표준 구조를 따르며, 문서에서 설명한 동작을 코드와 테스트로 직접 검증합니다.
 
 ```mermaid
 flowchart LR
     A["공식 자료와 1차 출처"] --> B["docs/research<br/>조사 문서"]
     B --> C["docs/study<br/>단계별 학습 자료"]
     C --> D["visualization<br/>인터랙티브 학습"]
-    C --> E["프레임워크·라이브러리별<br/>실행 학습 테스트"]
+    C --> E["practice/domain/topic<br/>실행 학습 테스트"]
     E -->|검증 결과| B
 ```
 
@@ -159,7 +159,7 @@ pnpm dev
 
 - [공식 근거 조사](./docs/research/infra/k6/index.md) — 개념, 생명주기, executor, metric, 실습 전략
 - [단계별 학습 과정](./docs/study/infra/k6/index.md) — 기초 정신 모델부터 테스트 설계까지 6단계
-- [실행 실습](./k6/README.md) — smoke, closed/open model, 의도적 threshold 실패
+- [실행 실습](./practice/infra/k6/README.md) — smoke, closed/open model, 의도적 threshold 실패
 - [인터랙티브 시각화](http://localhost:3113/infra/k6) — 부하 파형, 예상 metric, 품질 게이트, options 코드 생성
 
 시각화의 수치는 개념 학습을 위한 결정론적 모델이며 벤치마크 결과가 아닙니다. 실제 동작은 로컬 k6 실습으로 확인합니다.
