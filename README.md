@@ -69,15 +69,15 @@ flowchart LR
 ├── docs/
 │   ├── research/<domain>/<topic>/   # 공신력 있는 자료 조사와 근거 정리
 │   │   ├── index.md
-│   │   ├── 01-overview.md
-│   │   ├── 02-<detail>.md
-│   │   └── 03-<application>.md
+│   │   ├── 01-<system-model>.md
+│   │   ├── 02-<mechanism>.md
+│   │   └── … <design-and-diagnosis>.md
 │   └── study/<domain>/<topic>/      # 조사 자료를 가공한 단계별 학습 콘텐츠
 │       ├── index.md
-│       ├── 01-overview.md
-│       ├── 02-<detail-lesson>.md
-│       └── 03-<application-lesson>.md
-├── visualization/                  # Next.js 기반 인터랙티브 시각화 앱
+│       ├── 01-<mental-model>.md
+│       ├── 02-<mechanism-lesson>.md
+│       └── … <experiment-and-capstone>.md
+├── visualization/                  # 장문 기술 아티클과 문맥형 인터랙티브 도해
 └── practice/<domain>/<topic>/      # 문서의 개념을 실행으로 검증하는 실습
     ├── infra/k6/                   # k6 로컬 대상 서버와 실행 시나리오
     ├── be/spring/                  # 예: JUnit 기반 Spring 학습 테스트
@@ -116,10 +116,10 @@ flowchart LR
 
 ### 설명 방식
 
-- `무엇인가`뿐 아니라 `왜 필요한가`와 `어떻게 동작하는가`를 함께 다룹니다.
-- 작은 정신 모델에서 시작해 실제 시스템 수준으로 점진적으로 확장합니다.
-- 흔한 오해와 실패 사례를 통해 개념의 경계를 설명합니다.
-- 학습 후 스스로 설명하거나 예측할 수 있는지 확인합니다.
+- `무엇인가`뿐 아니라 `왜 필요한가`, `어떻게 동작하는가`, `어디서 깨지는가`까지 다룹니다.
+- 의미론, 내부 메커니즘, 정량 모델, 구현·버전 경계, 설계 판단을 교재 수준으로 전개합니다.
+- 계산 예제, 실행 추적, 흔한 오해와 실패 진단으로 개념의 경계를 설명합니다.
+- 학습 후 설명·계산·설계·진단할 수 있는지를 연습문제로 확인합니다.
 
 ## 하나의 주제를 구성하는 기준
 
@@ -158,9 +158,9 @@ pnpm dev
 ### k6 부하 테스트
 
 - [공식 근거 조사](./docs/research/infra/k6/index.md) — 개념, 생명주기, executor, metric, 실습 전략
-- [단계별 학습 과정](./docs/study/infra/k6/index.md) — 기초 정신 모델부터 테스트 설계까지 6단계
+- [단계별 학습 과정](./docs/study/infra/k6/index.md) — 런타임, 부하 모델, 용량 산정, 통계, 진단과 종합 실습까지 8장
 - [실행 실습](./practice/infra/k6/README.md) — smoke, closed/open model, 의도적 threshold 실패
-- [인터랙티브 시각화](http://localhost:3113/infra/k6) — 부하 파형, 예상 metric, 품질 게이트, options 코드 생성
+- [인터랙티브 기술 아티클](http://localhost:3113/infra/k6) — 장문 해설 속 부하 모델 계산기와 지연시간 분포 탐색 도해
 
 시각화의 수치는 개념 학습을 위한 결정론적 모델이며 벤치마크 결과가 아닙니다. 실제 동작은 로컬 k6 실습으로 확인합니다.
 

@@ -1,21 +1,31 @@
 import { describe, expect, it } from 'vitest';
-import { defaultInput, simulate } from './model';
+import { analyzeDistribution, analyzeWorkload } from './model';
 
-describe('k6 learning simulation', () => {
-  it('reduces closed-model throughput as response latency rises', () => {
-    const fast = simulate({ ...defaultInput, model: 'closed', latencyMs: 100 });
-    const slow = simulate({ ...defaultInput, model: 'closed', latencyMs: 900 });
-    expect(slow.peakRate).toBeLessThan(fast.peakRate);
+describe('k6 article figures', () => {
+  it('shows closed throughput falling when latency rises', () => {
+    const base = { targetRate: 60, closedVUs: 30, maxVUs: 80, thinkTimeMs: 500 };
+    const fast = analyzeWorkload({ ...base, latencyMs: 100 });
+    const slow = analyzeWorkload({ ...base, latencyMs: 1_000 });
+    expect(slow.closedRate).toBeLessThan(fast.closedRate);
   });
 
-  it('reports dropped iterations when open-model VU capacity is too small', () => {
-    const result = simulate({ ...defaultInput, target: 100, latencyMs: 1_000, maxVUs: 5 });
-    expect(result.dropped).toBeGreaterThan(0);
-    expect(result.passed).toBe(false);
+  it('derives open-model VU demand with N = lambda W', () => {
+    const result = analyzeWorkload({
+      targetRate: 60,
+      latencyMs: 1_500,
+      closedVUs: 30,
+      maxVUs: 50,
+      thinkTimeMs: 500,
+    });
+    expect(result.openRequiredVUs).toBe(90);
+    expect(result.droppedPerSecond).toBeGreaterThan(0);
   });
 
-  it('passes a small healthy scenario', () => {
-    const result = simulate({ ...defaultInput, target: 5, latencyMs: 100, maxVUs: 20 });
+  it('exposes a slow tail that the average compresses', () => {
+    const result = analyzeDistribution(5);
+    expect(result.average).toBeLessThan(result.p99);
+    expect(result.p95).toBeLessThan(400);
+    expect(result.p99).toBeGreaterThan(400);
     expect(result.passed).toBe(true);
   });
 });

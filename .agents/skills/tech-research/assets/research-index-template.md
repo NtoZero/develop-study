@@ -17,6 +17,15 @@ last_verified: "{{YYYY-MM-DD}}"
 - 포함 범위: {{IN_SCOPE}}
 - 제외 범위: {{OUT_OF_SCOPE}}
 
+## 깊이 범위
+
+| 층 | 다룰 질문 | 근거 유형 | 문서 |
+| --- | --- | --- | --- |
+| 의미론 | {{SEMANTICS_QUESTION}} | {{SPEC_OR_OFFICIAL_DOC}} | {{DOCUMENT}} |
+| 메커니즘 | {{MECHANISM_QUESTION}} | {{ARCHITECTURE_OR_SOURCE}} | {{DOCUMENT}} |
+| 정량 모델 | {{QUANTITATIVE_QUESTION}} | {{MODEL_OR_MEASUREMENT_DOC}} | {{DOCUMENT}} |
+| 실패·운영 | {{DIAGNOSIS_QUESTION}} | {{OPERATIONS_OR_TEST_DOC}} | {{DOCUMENT}} |
+
 ## 문서 구성
 
 | 순서 | 문서 | 난이도 | 소주제 | 중심 질문 | 선수 문서 | 검증일 |

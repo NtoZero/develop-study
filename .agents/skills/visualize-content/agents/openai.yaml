@@ -1,4 +1,4 @@
 interface:
   display_name: "Visualize Content"
-  short_description: "학습 원문을 주제별 인터랙티브 Next.js 경험으로 구현"
-  default_prompt: "Use $visualize-content to turn an existing study topic into a specialized, sequential, and accessible interactive experience in the visualization app."
+  short_description: "교재 원문을 기술 블로그와 문맥형 인터랙티브 figure로 구현"
+  default_prompt: "Use $visualize-content to publish the study content as a long-form technical article with small contextual interactive figures in the visualization app."

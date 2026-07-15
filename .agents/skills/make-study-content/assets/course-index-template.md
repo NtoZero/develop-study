@@ -28,6 +28,12 @@ last_updated: "{{YYYY-MM-DD}}"
 - {{필수 선수 지식}}
 - {{알면 도움이 되지만 과정에서 복습하는 지식}}
 
+## 표기와 분석 도구
+
+| 기호·도구 | 의미 | 단위 또는 적용 범위 |
+| --- | --- | --- |
+| {{SYMBOL_OR_TOOL}} | {{MEANING}} | {{UNIT_OR_SCOPE}} |
+
 ## 전체 학습 지도
 
 ```mermaid
@@ -38,9 +44,9 @@ flowchart LR
 
 ## 학습 순서
 
-| 순서 | 학습 자료 | 난이도 | 소주제 | 중심 질문 | 선수 지식 | 근거 조사 | 시각화 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 01 | [{{LESSON_TITLE}}](./01-{{LESSON_SLUG}}.md) | overview | {{SUBTOPIC}} | {{QUESTION}} | {{PREREQUISITE}} | [{{RESEARCH_TITLE}}]({{RESEARCH_PATH}}) | {{VISUAL}} |
+| 순서 | 장 | 깊이 | 중심 질문 | 분석 방법 | 선수 지식 | 근거·실습 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 01 | [{{LESSON_TITLE}}](./01-{{LESSON_SLUG}}.md) | {{foundation-mechanism-advanced}} | {{QUESTION}} | {{TRACE_MODEL_DIAGNOSIS}} | {{PREREQUISITE}} | [조사]({{RESEARCH_PATH}}) · [실습]({{PRACTICE_PATH}}) |
 
 ## 이 순서로 배우는 이유
 
@@ -55,6 +61,7 @@ flowchart LR
 ## 완료 기준
 
 - {{암기가 아니라 설명과 예측으로 확인할 기준}}
+- {{수치 계산, 실행 추적, 실패 진단 또는 설계 선택으로 확인할 기준}}
 
 ## 근거 범위와 제한
 

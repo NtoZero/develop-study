@@ -1,4 +1,4 @@
 interface:
   display_name: "Tech Research"
-  short_description: "공신력 있는 기술 자료를 조사해 단계별 연구 문서로 구성"
-  default_prompt: "Use $tech-research to research a technical topic from authoritative sources and write an indexed set of Korean Markdown documents split by level and subtopic."
+  short_description: "공식 근거로 메커니즘·정량 모델·실패 진단까지 심층 조사"
+  default_prompt: "Use $tech-research to produce a source-traceable deep technical research set covering mechanisms, quantitative models, implementation boundaries, and diagnosis."
