@@ -1,0 +1,19 @@
+{
+  "name": "developer-study-k6-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "target": "node target/server.mjs",
+    "smoke": "k6 run scenarios/01-smoke.js",
+    "closed": "k6 run scenarios/02-ramping-vus.js",
+    "open": "k6 run scenarios/03-arrival-rate.js",
+    "fail": "k6 run scenarios/04-threshold-failure.js",
+    "docker:smoke": "docker compose run --rm k6 run /scripts/01-smoke.js",
+    "docker:closed": "docker compose run --rm k6 run /scripts/02-ramping-vus.js",
+    "docker:open": "docker compose run --rm k6 run /scripts/03-arrival-rate.js",
+    "docker:fail": "docker compose run --rm k6 run /scripts/04-threshold-failure.js"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}

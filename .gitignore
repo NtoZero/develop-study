@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+.pnpm-store/
+
+**/.env
+**/.env.local
+**/node_modules/
+**/.next/
+**/*.log

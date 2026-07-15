@@ -1,0 +1,4 @@
+interface:
+  display_name: "Make Study Content"
+  short_description: "연구 문서를 난이도와 소주제별 학습 자료로 체계화"
+  default_prompt: "Use $make-study-content to transform a topic's research document set into an indexed Korean course split into ordered overview, detail, and application lessons."
