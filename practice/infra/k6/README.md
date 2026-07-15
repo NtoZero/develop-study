@@ -6,7 +6,7 @@
 
 - Node.js 20.9 이상
 - 다음 중 하나
-  - k6 v2.0.0 로컬 설치
+  - k6 v2.1.0 로컬 설치
   - Docker와 Docker Compose
 
 ## 1. 대상 서버 실행
@@ -87,4 +87,4 @@ pnpm docker:fail
 - [k6 학습 로드맵](../../../docs/study/infra/k6/index.md)
 - [k6 조사 문서](../../../docs/research/infra/k6/index.md)
 - [공식 k6 설치 문서](https://grafana.com/docs/k6/latest/set-up/install-k6/)
-- [k6 v2.0.0 릴리스](https://github.com/grafana/k6/releases/tag/v2.0.0)
+- [k6 v2.1.0 릴리스](https://github.com/grafana/k6/releases/tag/v2.1.0)

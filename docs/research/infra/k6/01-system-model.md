@@ -1,13 +1,46 @@
 ---
-title: "성능 테스트의 시스템 모델"
-description: "k6의 VU, iteration, scenario, request를 분리하고 테스트가 실제로 답하는 질문을 정의한다"
+title: "k6의 정체성과 성능 테스트 시스템 모델"
+description: "k6의 철학·제품군·라이선스·관리 주체를 확인하고 VU, iteration, scenario, request를 분리해 테스트가 실제로 답하는 질문을 정의한다"
 domain: "infra"
 topic: "k6"
 difficulty: "foundation-to-detail"
 last_verified: "2026-07-16"
 ---
 
-# 성능 테스트의 시스템 모델
+# k6의 정체성과 성능 테스트 시스템 모델
+
+## 제품을 먼저 이해하기
+
+k6는 단순히 HTTP 요청을 빠르게 반복하는 도구가 아니라, **성능 테스트를 개발자의 코드·버전 관리·자동화 워크플로 안으로 옮기려는 제품 철학**에서 출발했다. 프로젝트는 2016년에 시작되어 2017년에 오픈소스로 공개됐고, 공식 README는 최고의 개발자 경험을 핵심 설계 목표로 밝힌다. 이 철학은 JavaScript·TypeScript로 작성하는 tests as code, 로컬과 CI에서 같은 스크립트를 실행하는 CLI, threshold에 의한 기계적 pass/fail, 확장 가능한 출력과 프로토콜 구조로 구체화된다.
+
+### 하나의 이름 아래 서로 다른 제공 형태가 있다
+
+| 구성 | 제공 형태 | 관리·운영 주체 | 라이선스·약관 | 경계 |
+| --- | --- | --- | --- | --- |
+| Grafana k6 OSS | 소스와 self-managed CLI | Grafana Labs가 개발을 주도하고 외부 기여자가 참여 | `AGPL-3.0` | 로컬·CI·자체 인프라에서 사용자가 실행·운영 |
+| Grafana Cloud k6 Free·Pro | Grafana Cloud의 managed service | Grafana Labs | Grafana Cloud 서비스 약관과 플랜 조건 | 분산 실행, 보존, 협업·분석·지원 등 managed 기능 |
+| k6 extension 생태계 | core에 포함되거나 별도 extension으로 배포 | 공식·커뮤니티 프로젝트별로 다름 | 각 저장소에서 별도 확인 | core의 AGPL-3.0을 모든 extension에 자동 적용한다고 가정할 수 없음 |
+
+`k6`라는 이름만 보고 OSS 실행 엔진과 Grafana Cloud 서비스를 같은 배포물 또는 같은 라이선스로 취급하면 안 된다. 이 교재와 실습의 주 대상은 **Grafana k6 OSS CLI v2.1.0**이며 Cloud 전용 실행·과금·보존 기능은 범위에서 제외한다.
+
+### 누가 만들고 관리하는가
+
+k6 스타트업이 프로젝트를 시작했고 Grafana Labs가 2021년 해당 회사를 인수했다. 현재 공식 제품 페이지는 Grafana Labs가 프로젝트 개발을 주도한다고 명시하며, 저장소는 `grafana/k6` 조직에서 공개적으로 운영된다. 외부 기여는 `CONTRIBUTING.md`, GitHub issue와 pull request를 통해 들어오고 공개 roadmap이 방향을 공유한다. 따라서 현재 구조는 독립 재단이 중립적으로 관리한다고 보기보다 **Grafana Labs가 주도하고 커뮤니티가 기여하는 vendor-led open source**로 이해하는 편이 근거에 맞다.
+
+### 라이선스를 선택 조건으로 읽기
+
+OSS 저장소의 `LICENSE.md`와 README는 k6를 GNU Affero General Public License v3.0, 즉 `AGPL-3.0`으로 배포한다고 밝힌다. 라이선스는 실행 자체만이 아니라 수정·배포·네트워크 제공 방식에 따라 의무가 달라질 수 있으므로, 제품에 내장하거나 수정본을 서비스로 제공하는 조직은 공식 원문과 자체 법무 검토로 적용 범위를 판단해야 한다. 반대로 Grafana Cloud k6의 이용 조건은 OSS의 AGPL 문서가 아니라 서비스 약관과 계약이 정한다.
+
+### 특장점은 조건과 대가를 함께 본다
+
+| 특장점 | 구현 근거 | 유리한 조건 | 한계·대가 |
+| --- | --- | --- | --- |
+| tests as code | JS/TS 스크립트, module, CLI, threshold | 코드 리뷰·CI·재현성이 중요한 팀 | 비개발 직군에는 스크립트 학습 비용이 생김 |
+| workload를 명시적으로 모델링 | scenario와 open·closed executor | 생산 트래픽의 도착 구조를 재현할 때 | 잘못된 모델을 정밀하게 실행할 위험은 남음 |
+| 단일 실행 엔진과 확장성 | Go 엔진, embedded JS, 여러 output·extension | 로컬 반복에서 자동화·관측 연동으로 확장할 때 | Node.js 런타임과 동일하지 않으며 extension별 호환성·라이선스 확인이 필요 |
+| OSS와 managed 경로의 연결 | 같은 테스트를 로컬·CI·Cloud에서 실행 | 작은 검증에서 분산 실행으로 성장할 때 | Cloud 기능은 별도 서비스 경계와 비용·약관을 가짐 |
+
+이 특성들은 k6가 모든 성능 테스트 도구보다 우월하다는 뜻이 아니다. GUI 중심 authoring, JVM 생태계와의 밀착, 특정 프로토콜의 성숙도, 완전한 vendor-neutral governance가 우선이면 다른 도구가 더 적합할 수 있다.
 
 ## 먼저 정해야 하는 것은 사용자 수가 아니다
 
@@ -93,6 +126,10 @@ k6의 HTTP timing은 **부하 생성기에서 본 client-side 결과**다. `wait
 
 ## 근거와 한계
 
+- [Grafana k6 OSS 제품 개요](https://grafana.com/oss/k6/): 시작 배경, mission, Grafana Labs의 개발 주도, OSS·Cloud 제품 경계 근거.
+- [grafana/k6 공식 저장소](https://github.com/grafana/k6): 개발자 경험 철학, tests as code·엔진·확장 특성, 공개 roadmap와 기여 경로 근거.
+- [k6 AGPL-3.0 원문](https://github.com/grafana/k6/blob/v2.1.0/LICENSE.md): OSS v2.1.0 라이선스 근거.
+- [Grafana Labs의 k6 인수 발표](https://grafana.com/press/2021/06/17/grafana-labs-brings-modern-open-source-load-testing-to-observability-with-acquisition-of-k6/): 2021년 인수와 제품 방향 근거.
 - [Scenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/): scenario의 독립 실행 설정과 복수 workload 근거.
 - [Executors](https://grafana.com/docs/k6/latest/using-k6/scenarios/executors/): 제어 변수와 실행 단위 근거.
 - [Metrics](https://grafana.com/docs/k6/latest/using-k6/metrics/): built-in metric 의미 근거.

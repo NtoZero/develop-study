@@ -15,7 +15,7 @@ last_verified: "2026-07-16"
 
 기록한다.
 
-- k6 `v2.0.0` 또는 `grafana/k6:2.0.0`
+- k6 `v2.1.0` 또는 `grafana/k6:2.1.0`
 - commit hash, 실행 시각, generator 사양
 - target config와 다른 실행 중인 workload
 - 각 run의 예상 결과

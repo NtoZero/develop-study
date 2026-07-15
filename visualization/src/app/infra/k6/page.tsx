@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 const toc = [
+  ['identity', 'k6의 철학과 제품 경계'],
   ['question', '성능 테스트의 질문'],
   ['units', '네 실행 단위'],
   ['models', 'closed와 open'],
@@ -36,7 +37,7 @@ export default function K6ArticlePage() {
               <li key={id}><a href={`#${id}`}>{label}</a></li>
             ))}
           </ol>
-          <p className="toc-note">읽는 시간 약 18분<br />k6 v2.0.0 기준</p>
+          <p className="toc-note">읽는 시간 약 21분<br />k6 v2.1.0 기준</p>
         </aside>
 
         <article className="technical-article">
@@ -52,6 +53,29 @@ export default function K6ArticlePage() {
               <span>공식 문서 검증 · 로컬 실습 포함</span>
             </div>
           </header>
+
+          <section id="identity">
+            <p className="section-number">00</p>
+            <h2>k6는 부하 생성기보다 하나의 개발 철학에 가깝다</h2>
+            <p>
+              k6는 2016년에 시작해 2017년 오픈소스로 공개됐고, 2021년 Grafana Labs가 프로젝트를 만든 회사를 인수했다.
+              공식 저장소가 밝힌 핵심 설계 목표는 <strong>개발자 경험</strong>이다. 그래서 테스트를 JavaScript·TypeScript 코드로 작성하고,
+              버전 관리와 코드 리뷰를 거쳐 로컬·CI에서 반복하며, threshold를 프로세스 종료 상태로 바꾼다. tests as code는 편의 기능이 아니라 제품의 중심 관점이다.
+            </p>
+            <table>
+              <thead><tr><th>구성</th><th>관리·운영</th><th>라이선스·약관</th><th>경계</th></tr></thead>
+              <tbody>
+                <tr><td>Grafana k6 OSS</td><td>Grafana Labs 주도 + 외부 기여</td><td>AGPL-3.0</td><td>self-managed CLI와 공개 소스</td></tr>
+                <tr><td>Grafana Cloud k6</td><td>Grafana Labs managed service</td><td>Cloud 서비스 약관</td><td>분산 실행·보존·협업·지원</td></tr>
+                <tr><td>k6 extensions</td><td>공식·커뮤니티 프로젝트별 상이</td><td>각 저장소에서 확인</td><td>core 밖의 프로토콜·출력·기능</td></tr>
+              </tbody>
+            </table>
+            <p>
+              이 글과 실습은 <strong>Grafana k6 OSS CLI v2.1.0</strong>을 다룬다. Cloud 기능을 OSS 라이선스의 일부로 보거나,
+              모든 extension에 core의 라이선스와 유지보수 수준이 자동 적용된다고 가정하지 않는다. k6의 강점은 코드 리뷰·CI·명시적 workload model이 필요한 팀에서 커지고,
+              GUI 중심 작성이나 독립 재단 거버넌스가 중요한 환경에서는 그 선택 기준을 다시 비교해야 한다.
+            </p>
+          </section>
 
           <section id="question">
             <p className="section-number">01</p>
@@ -253,14 +277,16 @@ npm run k6:fail      # 의도된 비정상 종료`}</code></pre>
 
           <footer className="article-sources">
             <h2>근거와 다음 읽을거리</h2>
-            <p>이 글은 2026-07-16에 Grafana 공식 문서와 k6 v2.0.0 릴리스를 교차 확인했다. 인터랙티브 수치는 개념을 드러내는 결정론적 모델이며 benchmark 결과가 아니다.</p>
+            <p>이 글은 2026-07-16에 Grafana 공식 문서, 공식 저장소와 k6 v2.1.0 릴리스를 교차 확인했다. 인터랙티브 수치는 개념을 드러내는 결정론적 모델이며 benchmark 결과가 아니다.</p>
             <ul>
               <li><a href="https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/open-vs-closed/">Grafana k6 · Open and closed models ↗</a></li>
               <li><a href="https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/arrival-rate-vu-allocation/">Grafana k6 · Arrival-rate VU allocation ↗</a></li>
               <li><a href="https://grafana.com/docs/k6/latest/using-k6/metrics/">Grafana k6 · Metrics ↗</a></li>
               <li><a href="https://grafana.com/docs/k6/latest/using-k6/thresholds/">Grafana k6 · Thresholds ↗</a></li>
               <li><a href="https://grafana.com/docs/k6/latest/testing-guides/automated-performance-testing/">Grafana k6 · Automated performance testing ↗</a></li>
-              <li><a href="https://github.com/grafana/k6/releases/tag/v2.0.0">GitHub · k6 v2.0.0 release ↗</a></li>
+              <li><a href="https://grafana.com/oss/k6/">Grafana · k6 제품 철학과 제품군 ↗</a></li>
+              <li><a href="https://github.com/grafana/k6">GitHub · k6 저장소와 AGPL-3.0 ↗</a></li>
+              <li><a href="https://github.com/grafana/k6/releases/tag/v2.1.0">GitHub · k6 v2.1.0 release ↗</a></li>
             </ul>
           </footer>
         </article>

@@ -33,7 +33,7 @@ npm run k6:arrival
 npm run k6:fail
 ```
 
-로컬 k6가 없어도 공식 `grafana/k6:2.0.0` 이미지를 사용하는 compose profile을 제공한다. 버전을 floating `latest`로 두지 않아 실행 의미가 바뀌는 것을 막는다.
+로컬 k6가 없어도 공식 `grafana/k6:2.1.0` 이미지를 사용하는 compose profile을 제공한다. 버전을 floating `latest`로 두지 않아 실행 의미가 바뀌는 것을 막는다.
 
 ## 실험 기록 계약
 
@@ -66,11 +66,12 @@ PR마다 큰 stress test를 돌리면 비용과 변동성이 크고 shared runne
 
 ## 버전 경계
 
-k6 `v2.0.0`은 Go module path가 `/v2`로 바뀌고 과거 기능 일부가 제거된 major release다. 이 실습은 core HTTP·scenario·threshold API에 한정한다. 향후 버전 갱신 시 공식 release note, image digest, script 회귀 실행을 함께 검토한다.
+k6 `v2.0.0`은 Go module path가 `/v2`로 바뀌고 과거 기능 일부가 제거된 major release이며, 현재 기준 `v2.1.0`은 공식 릴리스 노트상 breaking change가 없는 후속 minor release다. 이 실습은 core HTTP·scenario·threshold API에 한정한다. 향후 버전 갱신 시 공식 release note, image digest, script 회귀 실행을 함께 검토한다.
 
 ## 근거와 한계
 
 - [Local execution](https://grafana.com/docs/k6/latest/get-started/running-k6/): CLI 실행 방식.
 - [Results output](https://grafana.com/docs/k6/latest/get-started/results-output/): summary와 granular output 구분.
-- [k6 v2.0.0 release](https://github.com/grafana/k6/releases/tag/v2.0.0): 버전·breaking change 근거.
+- [k6 v2.0.0 release](https://github.com/grafana/k6/releases/tag/v2.0.0): v2 major 전환 근거.
+- [k6 v2.1.0 release](https://github.com/grafana/k6/releases/tag/v2.1.0): 현재 실습 버전과 breaking change 없음의 근거.
 - 로컬 의도적 지연 서버는 모델 이해에 적합하지만 실제 proxy, DB, autoscaling 특성까지 재현하지는 않는다.

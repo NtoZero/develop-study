@@ -1,4 +1,4 @@
 interface:
   display_name: "Make Study Content"
-  short_description: "심층 연구를 계산·진단·설계가 가능한 교재형 과정으로 구성"
-  default_prompt: "Use $make-study-content to turn the deep research set into a textbook-style Korean course with derivations, worked examples, diagnosis, and design exercises."
+  short_description: "제품 정체성부터 메커니즘·진단까지 교재형 과정 구성"
+  default_prompt: "Use $make-study-content to turn deep research into a textbook-style Korean course that begins with product philosophy, licensing, governance, and product boundaries when applicable."

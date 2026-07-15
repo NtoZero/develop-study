@@ -1,6 +1,6 @@
 services:
   k6:
-    image: grafana/k6:2.0.0
+    image: grafana/k6:2.1.0
     environment:
       BASE_URL: http://host.docker.internal:3001
     volumes:

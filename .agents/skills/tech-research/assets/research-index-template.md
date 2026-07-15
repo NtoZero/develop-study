@@ -21,6 +21,7 @@ last_verified: "{{YYYY-MM-DD}}"
 
 | 층 | 다룰 질문 | 근거 유형 | 문서 |
 | --- | --- | --- | --- |
+| 제품 정체성 | {{PHILOSOPHY_LICENSE_GOVERNANCE_QUESTION}} | {{LICENSE_GOVERNANCE_OFFICIAL_ABOUT}} | {{OVERVIEW_DOCUMENT}} |
 | 의미론 | {{SEMANTICS_QUESTION}} | {{SPEC_OR_OFFICIAL_DOC}} | {{DOCUMENT}} |
 | 메커니즘 | {{MECHANISM_QUESTION}} | {{ARCHITECTURE_OR_SOURCE}} | {{DOCUMENT}} |
 | 정량 모델 | {{QUANTITATIVE_QUESTION}} | {{MODEL_OR_MEASUREMENT_DOC}} | {{DOCUMENT}} |

@@ -12,9 +12,12 @@ last_verified: "2026-07-16"
 
 이 교재의 목표는 k6 옵션을 외우는 것이 아니다. 운영 트래픽을 실행 가능한 workload로 모델링하고, k6가 만드는 표본의 의미를 설명하며, threshold 실패를 서버의 병목 가설로 연결할 수 있어야 한다.
 
+대상 제품은 `AGPL-3.0`의 Grafana k6 OSS CLI `v2.1.0`이다. Grafana Cloud k6와 extension은 제품군 경계를 이해하기 위해 다루지만 Cloud 전용 기능과 개별 extension 구현은 학습 범위에서 제외한다. 철학·라이선스·관리 주체와 선택 조건은 첫 장에서 설명한다.
+
 ## 학습 후 할 수 있어야 하는 것
 
 - VU·iteration·request rate를 서로 바꿔 말하지 않는다.
+- k6 OSS·Grafana Cloud·extension의 경계와 라이선스·관리 주체를 구분한다.
 - 생산 시스템의 feedback 구조에 따라 closed/open model을 선택한다.
 - `N = λW`로 arrival-rate workload의 VU 요구량을 추정하고 drop을 진단한다.
 - 평균·percentile·오류율의 표본과 분모를 설명한다.
@@ -45,7 +48,7 @@ last_verified: "2026-07-16"
 
 | 장 | 핵심 질문 | 분석 방법 | 연결 조사·실습 |
 | --- | --- | --- | --- |
-| [01. 테스트는 실행 가능한 모델이다](./01-performance-test-model.md) | 무엇을 견딘다는 말의 정확한 뜻은? | 단위·경계 분해 | research 01, smoke |
+| [01. 제품 철학에서 실행 가능한 모델까지](./01-performance-test-model.md) | 왜 k6는 tests as code를 택했고 무엇을 견딘다는 말의 정확한 뜻은? | 제품·단위·경계 분해 | research 01, smoke |
 | [02. k6 런타임과 데이터 격리](./02-runtime-and-data-isolation.md) | 데이터는 언제, 몇 번, 어디에 존재하는가? | 실행 trace·메모리 모델 | research 02 |
 | [03. closed/open과 Little's Law](./03-open-closed-and-littles-law.md) | 느려질 때 입력은 왜 달라지는가? | feedback·수식 | research 03, ramp/arrival |
 | [04. executor 용량 계획](./04-executor-capacity-planning.md) | 목표 rate에 VU가 몇 개 필요한가? | 분포·headroom·drop | research 04, arrival |

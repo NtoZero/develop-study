@@ -1,4 +1,4 @@
 interface:
   display_name: "Tech Research"
-  short_description: "공식 근거로 메커니즘·정량 모델·실패 진단까지 심층 조사"
-  default_prompt: "Use $tech-research to produce a source-traceable deep technical research set covering mechanisms, quantitative models, implementation boundaries, and diagnosis."
+  short_description: "제품 철학·라이선스·거버넌스까지 공식 근거로 심층 조사"
+  default_prompt: "Use $tech-research to produce a source-traceable deep technical research set, including product philosophy, licensing, governance, product boundaries, mechanisms, and diagnosis when applicable."
