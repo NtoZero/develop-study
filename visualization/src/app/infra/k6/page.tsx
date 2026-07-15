@@ -25,7 +25,7 @@ export default function K6ArticlePage() {
     <main className="article-page">
       <header className="article-site-header">
         <Link href="/" className="article-wordmark">Developer Study</Link>
-        <span>INFRA / PERFORMANCE</span>
+        <Link href="/infra" className="article-field-link">INFRA / PERFORMANCE</Link>
         <span>PORT 3113</span>
       </header>
 
